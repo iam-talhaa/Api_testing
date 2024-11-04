@@ -12,21 +12,27 @@ class Get_post_api extends StatefulWidget {
 }
 
 class _Get_post_apiState extends State<Get_post_api> {
-  List<PostModel> PostLIst = [];
+  List<PostModel> PostLIst = []; //  Create list to add Data of Api
   Future<List<PostModel>> GetpostAPi() async {
-    var response =
-        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+    print("asd");
 
-    var maxData = jsonDecode(response.body.toString());
+    var response = await http.get(Uri.parse(
+        'https://jsonplaceholder.typicode.com/posts')); // Hit Api data
+
+    var maxData =
+        jsonDecode(response.body.toString()); // Decode to Dart Formate
 
     if (response.statusCode == 200) {
+      // check status code
       for (var data in maxData) {
-        PostLIst.add(PostModel.fromJson(data));
+        //  it will call every object according to the list of the data in api
+        PostLIst.add(PostModel.fromJson(
+            data)); //get data through Model and Add that data in postlist;
       }
     } else
-      PostLIst;
+      PostLIst; //it will show empty list
 
-    return PostLIst;
+    return PostLIst; //it will show data in list
   }
 
   @override

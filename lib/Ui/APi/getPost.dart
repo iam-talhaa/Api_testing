@@ -23,6 +23,7 @@ class _Get_post_apiState extends State<Get_post_api> {
         jsonDecode(response.body.toString()); // Decode to Dart Formate
 
     if (response.statusCode == 200) {
+      print("check");
       // check status code
       for (var data in maxData) {
         //  it will call every object according to the list of the data in api

@@ -23,11 +23,13 @@ class _Comment_api_screenState extends State<Comment_api_screen> {
                         builder: (context, snapshot) {
                           return Expanded(
                             child: ListView.builder(
-                                itemCount: 30,
+                                itemCount: model.commentList.length,
                                 itemBuilder: (context, index) {
                                   return ListTile(
                                     title: Text(
-                                        '${CommentProvide().Get_comment_api().toString()}'),
+                                        '${model.commentList[index].name}'),
+                                    subtitle: Text(
+                                        '${model.commentList[index].body}'),
                                   );
                                 }),
                           );

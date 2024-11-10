@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api_practice/Ui/APi/getPost.dart';
+import 'package:flutter_api_practice/Ui/comments/C_provider.dart';
+import 'package:flutter_api_practice/Ui/comments/UIComment.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(Flutter_api());
-}
-
-class Flutter_api extends StatefulWidget {
-  const Flutter_api({super.key});
-
-  @override
-  State<Flutter_api> createState() => _Flutter_apiState();
-}
-
-class _Flutter_apiState extends State<Flutter_api> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Get_post_api(),
-    );
-  }
+  runApp(
+    /// Providers are above [MyApp] instead of inside it, so that tests
+    /// can use [MyApp] while mocking the providers
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CommentProvide()),
+      ],
+      child: Comment_api_screen(),
+    ),
+  );
 }

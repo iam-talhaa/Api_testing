@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_api_practice/Ui/comments/Api_model.dart';
@@ -16,7 +17,9 @@ class CommentProvide extends ChangeNotifier {
     if (response.statusCode == 200) {
       for (var data in maxdata) {
         commentList.add(Comment_Model.fromJson(data));
+        print(commentList);
       }
+      notifyListeners();
       return commentList;
     } else {
       return commentList;

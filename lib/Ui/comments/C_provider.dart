@@ -17,7 +17,7 @@ class CommentProvide extends ChangeNotifier {
     if (response.statusCode == 200) {
       for (var data in maxdata) {
         commentList.add(Comment_Model.fromJson(data));
-        print(commentList);
+        
       }
       notifyListeners();
       return commentList;
